@@ -9,6 +9,11 @@ interface uart_if;
   logic valid_rx;
 endinterface
 
+module Uart_Interface (uart_if uart);
+  Uart_Transmitter tx_inst (uart);
+  Uart_Receiver    rx_inst (uart);
+endmodule
+
 module Uart_Receiver (uart_if uart);
 
   parameter int clk_freq = 50_000_000;
@@ -148,7 +153,3 @@ module Uart_Transmitter (uart_if uart);
 
 endmodule
 
-module Uart_Interface (uart_if uart);
-  Uart_Transmitter tx_inst (uart);
-  Uart_Receiver    rx_inst (uart);
-endmodule
